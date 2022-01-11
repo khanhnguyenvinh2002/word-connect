@@ -1,25 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import English from "./english/English"
+import Vietnamese from './vietnamese/Vietnamese';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={
+      instructionMode: false
+    }
+  }
+  render(){
+    return (
+      <div>
+        <div style={{display: "flex", justifyContent: "flex-end", height: "10vh", backgroundColor: "#282c34"}}>
+          <button className="header_btn" onClick={(e)=>{
+            e.preventDefault();
+            this.setState({isEnglish: !this.state.isEnglish})
+          }}>{this.state.isEnglish? "Vietnamese": "English"}</button>
+          <button className="header_btn" onClick={(e)=>{
+                e.preventDefault();
+                this.setState({instructionMode: !this.state.instructionMode})
+            }}>How to play</button>
+        </div>
+        {this.state.isEnglish ? <English instructionMode={this.state.instructionMode}/> : <Vietnamese instructionMode={this.state.instructionMode}/>}
+      </div>
+    );
+  }
 }
 
 export default App;
