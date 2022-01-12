@@ -4,6 +4,7 @@
 
 With the use of Radix Tree, serialization of data takes 40% less space than the use of Trie Tree. This data structure provide a O(k) search, delete, and insert, with k <= 26. When data gets bigger, this data structure becomes more efficient. 
 
+To create a serialized file, access the radixTree.js and scroll towards the end. Follow the instruction and run node radixTree you should see a text file in the folder containing the serialized file
 
 ## Available Scripts
 
