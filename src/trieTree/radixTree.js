@@ -71,9 +71,6 @@ class RadixTree {
       if (currentCharacter in currentNode.children) {
         const edgeLabel = currentNode.children[currentCharacter].edgeLabel;
 
-        // get the common prefix of this child's edge label and what's left of the word
-        const commonPrefix = getCommonPrefix(edgeLabel, word.substr(i));
-
         // if the edge label and what's left of the word are the same
         if (edgeLabel === word.substr(i)) {
           // update this child's data with the given data
@@ -81,6 +78,9 @@ class RadixTree {
 
           return;
         }
+
+        // get the common prefix of this child's edge label and what's left of the word
+        const commonPrefix = getCommonPrefix(edgeLabel, word.substr(i));
 
         // if the edge label contains the entirety of what's left of the word plus some extra
         if (commonPrefix.length < edgeLabel.length && commonPrefix.length === word.substr(i).length) {
